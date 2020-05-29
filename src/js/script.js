@@ -166,6 +166,7 @@
       thisProduct.cartButton.addEventListener('click', function (event) {
         event.preventDefault();
         thisProduct.processOrder();
+        thisProduct.addToCart();
       });
 
     }
@@ -173,13 +174,13 @@
       const thisProduct = this;
       const formData = utils.serializeFormToObject(thisProduct.form);
       console.log('formData', formData);
+      thisProduct.params = {};
       let price = thisProduct.data.price;
       console.log('processOrder');
       /* START LOOP: for each PARAM */
       for (let paramId in thisProduct.data.params) {
         /*save the element in thisProduct.data.params with key paramId as const param */
-        const param = thisProduct.data.params[paramId]; //czemu tu musimy zapisac ta param
-        /* START LOOP: for each OPTION */
+        const param = thisProduct.data.params[paramId];
         for (let optionId in param.options) {
           /* save the element in param.options with key optionId as const option */
           const option = param.options[optionId];
@@ -194,12 +195,18 @@
             price -= option.price;
             /* END: ELSE IF option is NOT checked && =default */
           }
-          /* wszystkie obrazki dla tej opcji to:
-          wszystkie elementy wyszukane w thisProduct.imageWrapper, które pasują do selektora, składającego się z:
-          kropki,klucza parametru,myślnika,klucza opcji.*/
+          /* all images for this option in thisProduct.imageWrapper, which match selector containing:. param key - option key*/
+
           const optionImages = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
           /* START: IF image */
           if (optionSelected) {
+            if (!thisProduct.params[paramId]) {
+              thisProduct.params[paramId] = {
+                label: param.label,
+                options: {},
+              };
+            }
+            thisProduct.params[paramId].options[optionId] = option.label;
             for (let optionImage of optionImages) {
               optionImage.classList.add(classNames.menuProduct.imageVisible);
             }
@@ -212,9 +219,14 @@
         }
         /* END LOOP: for each PARAM */
       }
-      /*multiply price by amount */
-      price *= thisProduct.amountWidget.value;
-      thisProduct.priceElem.innerHTML = price;
+      /* multiply price by amount */
+      thisProduct.priceSingle = price;
+      thisProduct.price = thisProduct.priceSingle * thisProduct.amountWidget.value;
+
+      /* set the contents of thisProduct.priceElem to be the value of variable price */
+      thisProduct.priceElem.innerHTML = thisProduct.price;
+      console.log('thisProduct.params', thisProduct.params);
+
     }
     initAmountWidget() {
       const thisProduct = this;
@@ -223,6 +235,12 @@
       thisProduct.amountWidgetElem.addEventListener('updated', function () {
         thisProduct.processOrder();
       });
+    }
+    addToCart() {
+      const thisProduct = this;
+      thisProduct.name = thisProduct.data.name;
+      thisProduct.amount = thisProduct.amountWidget.value;
+      app.cart.add(thisProduct);
     }
   }
 
@@ -293,9 +311,10 @@
 
       console.log('new Cart', thisCart);
 
-      /*    pokazywanie i ukrywanie koszyka,
-         dodawanie i usuwanie produktów,
-         podliczanie ceny zamówienia. */
+      /* - pokazywanie i ukrywanie koszyka - done
+         - dodawanie i usuwanie produktów,
+         - podliczanie ceny zamówienia. */
+
       //  górna belka koszyka wyświetla łączną kwotę zamówienia oraz liczbę produktów w koszyku.
     }
     getElements(element) {
@@ -306,6 +325,8 @@
       thisCart.dom.wrapper = element;
 
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+
+      thisCart.dom.productList = document.querySelector(select.containerOf.cart);
     }
     initActions() {
       const thisCart = this;
@@ -317,6 +338,23 @@
       });
 
     }
+    add(menuProduct) {
+      const thisCart = this;
+      /* właściwość data, a tutaj musimy do szablonu przekazać cały obiekt produktu. */
+
+      /* generate HTML based on template */
+      const generatedHTML = templates.cartProduct(menuProduct);
+      /* create element generatedDOM */
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+      /* find cart container */
+      const cartContainer = thisCart.dom.productList;
+      /* add element to cart */
+      cartContainer.appendChild(generatedDOM);
+
+      console.log('adding product', menuProduct);
+
+    }
+
   }
 
   // class CartProduct {
@@ -327,7 +365,7 @@
   //    usunięcia.
   //    w przypadku produktów z konfigurowalnymi opcjami, wyświetlamy wybrane przez klienta składniki. */
 
-  //   /* jej nstancje będą pojedynczymi produktami w koszyku.
+  //   /* jej instancje będą pojedynczymi produktami w koszyku.
   //   Dzięki takiemu podziałowi wszystko, co dotyczy danej pozycji z koszyka,
   //   będzie wyodrębnionym kodem. */
   // }

@@ -249,7 +249,7 @@
       const thisWidget = this;
       thisWidget.getElements(element);
       thisWidget.value = settings.amountWidget.defaultValue;
-      thisWidget.setValue(thisWidget.value);
+      thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
@@ -468,7 +468,7 @@
       thisCartProduct.dom.remove.addEventListener('click', function (event) {
         event.preventDefault();
         thisCartProduct.remove();
-      })
+      });
     }
   }
 

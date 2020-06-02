@@ -419,8 +419,8 @@
       const url = settings.db.url + '/' + settings.db.order;
 
       const payload = {
-        address: thisCart.dom.address,
-        phone: thisCart.dom.phone,
+        address: thisCart.dom.address.value,
+        phone: thisCart.dom.phone.value,
         totalNumber: thisCart.totalNumber,
         subtotalPrice: thisCart.subtotalPrice,
         deliveryFee: thisCart.deliveryFee,
@@ -428,8 +428,7 @@
         products: [],
       };
       for (let cartProd of thisCart.products) {
-        cartProd.getData();
-        payload.products.push(cartProd);
+        payload.products.push(cartProd.getData());
       }
       const options = {
         method: 'POST',

@@ -1,6 +1,6 @@
 import {
-  settings,
   select,
+  settings,
   templates,
   classNames
 } from '../settings.js';

@@ -1,3 +1,4 @@
+/* global flatpickr*/
 import BaseWidget from './BaseWidget.js';
 import {
   settings,
@@ -19,22 +20,22 @@ class DatePicker extends BaseWidget {
     thisWidget.minDate = new Date(thisWidget.value);
     thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture);
     flatpickr(thisWidget.dom.input, {
-        defaultDate: thisWidget.minDate,
-        minDate: thisWidget.minDate,
-        maxDate: thisWidget.maxDate,
-        'locale': {
-          'firstDayOfWeek': 1
-        },
-        'disable': [
-          function (date) {
-            return (date.getDay() === 1);
-          }
-        ],
-        onChange: function (selectedDates, dateStr) {
-          thisWidget.value = dateStr;
-        },
+      defaultDate: thisWidget.minDate,
+      minDate: thisWidget.minDate,
+      maxDate: thisWidget.maxDate,
+      'locale': {
+        'firstDayOfWeek': 1
+      },
+      'disable': [
+        function (date) {
+          return (date.getDay() === 1);
+        }
+      ],
+      onChange: function (selectedDates, dateStr) {
+        thisWidget.value = dateStr;
+      },
 
-      }
+    }
 
     );
   }

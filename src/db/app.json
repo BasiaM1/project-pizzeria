@@ -1,6 +1,5 @@
 {
-  "product": [
-    {
+  "product": [{
       "id": "cake",
       "class": "small",
       "name": "Zio Stefano's Doughnut",
@@ -203,10 +202,9 @@
     }
   ],
   "order": [],
-  "event": [
-    {
+  "event": [{
       "id": 1,
-      "date": "2019-01-01",
+      "date": "2020-06-30",
       "hour": "12:30",
       "table": 1,
       "repeat": false,
@@ -216,7 +214,7 @@
     },
     {
       "id": 2,
-      "date": "2019-01-01",
+      "date": "2020-07-01",
       "hour": "16:00",
       "table": 3,
       "repeat": "daily",
@@ -226,27 +224,27 @@
     },
     {
       "id": 3,
-      "date": "2019-01-01",
+      "date": "2020-08-01",
       "hour": "12:00",
       "table": 3,
       "repeat": "daily",
-      "duration": 2,
+      "duration": 1,
       "ppl": 3,
       "starters": ["bread", "lemonWater"]
     },
     {
       "id": 4,
-      "date": "2019-01-01",
+      "date": "2020-07-01",
       "hour": "13:00",
       "table": 2,
       "repeat": "daily",
-      "duration": 4,
+      "duration": 3,
       "ppl": 3,
       "starters": []
     },
     {
       "id": 5,
-      "date": "2019-01-01",
+      "date": "2020-07-01",
       "hour": "18:00",
       "table": 2,
       "repeat": "daily",
@@ -255,5 +253,14 @@
       "starters": ["lemonWater"]
     }
   ],
-  "booking": []
+  "booking": [{
+    "id": 1,
+    "date": "2020-06-30",
+    "hour": "19:30",
+    "table": 1,
+    "repeat": false,
+    "duration": 3,
+    "ppl": 3,
+    "starters": ["water"]
+  }]
 }

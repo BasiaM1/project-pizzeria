@@ -57,10 +57,10 @@ class Booking {
     console.log('getData urls', urls);
     // laczenie z API - pobranie rezerwacji
     Promise.all([
-        fetch(urls.booking),
-        fetch(urls.eventsCurrent),
-        fetch(urls.eventsRepeat),
-      ])
+      fetch(urls.booking),
+      fetch(urls.eventsCurrent),
+      fetch(urls.eventsRepeat),
+    ])
       .then(function (allResponses) {
         const bookingsResponse = allResponses[0];
         const eventCurrentResponse = allResponses[1];
@@ -160,6 +160,9 @@ class Booking {
     for (let table of thisBooking.dom.tables) {
       table.addEventListener('click', function () {
         table.classList.add(classNames.booking.tableBooked);
+        const tableSelectedId = table.getAttribute(settings.booking.tableIdAttribute);
+        console.log('tableSelected', tableSelectedId);
+
       });
     }
   }
@@ -171,7 +174,7 @@ class Booking {
     const payload = {
       date: thisBooking.datePicker.value,
       hour: thisBooking.hourPicker.value,
-      // table: [],
+      table: thisBooking.tableSelectedId,
       duration: thisBooking.hoursAmount.value,
       ppl: thisBooking.peopleAmount.value,
       starters: [],

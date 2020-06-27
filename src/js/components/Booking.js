@@ -17,6 +17,7 @@ class Booking {
     thisBooking.render(elBooking);
     thisBooking.initWidgets();
     thisBooking.getData();
+    thisBooking.selectTable();
     console.log('thisBooking', thisBooking);
   }
   getData() {
@@ -151,6 +152,15 @@ class Booking {
       } else {
         table.classList.remove(classNames.booking.tableBooked);
       }
+    }
+  }
+
+  selectTable() {
+    const thisBooking = this;
+    for (let table of thisBooking.dom.tables) {
+      table.addEventListener('click', function () {
+        table.classList.add(classNames.booking.tableBooked);
+      })
     }
   }
   render(elBooking) {

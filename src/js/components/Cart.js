@@ -136,6 +136,7 @@ class Cart {
     for (let cartProd of thisCart.products) {
       payload.products.push(cartProd.getData());
     }
+
     const options = {
       method: 'POST',
       headers: {

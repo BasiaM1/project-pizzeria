@@ -63,11 +63,11 @@ class Booking {
       ])
       .then(function (allResponses) {
         const bookingsResponse = allResponses[0];
-        const eventCurrentResponse = allResponses[1];
+        const eventsCurrentResponse = allResponses[1];
         const eventsRepeatResponse = allResponses[2];
         return Promise.all([
           bookingsResponse.json(),
-          eventCurrentResponse.json(),
+          eventsCurrentResponse.json(),
           eventsRepeatResponse.json(),
         ]);
       })

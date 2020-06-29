@@ -57,10 +57,10 @@ class Booking {
     console.log('getData urls', urls);
     // laczenie z API - pobranie rezerwacji
     Promise.all([
-      fetch(urls.booking),
-      fetch(urls.eventsCurrent),
-      fetch(urls.eventsRepeat),
-    ])
+        fetch(urls.booking),
+        fetch(urls.eventsCurrent),
+        fetch(urls.eventsRepeat),
+      ])
       .then(function (allResponses) {
         const bookingsResponse = allResponses[0];
         const eventsCurrentResponse = allResponses[1];
@@ -203,6 +203,7 @@ class Booking {
         return response.json();
       }).then(function (parsedResponse) {
         console.log('parsedResponse', parsedResponse);
+        thisBooking.getData();
       });
   }
   render(elBooking) {
@@ -248,6 +249,7 @@ class Booking {
     thisBooking.dom.form.addEventListener('submit', function (event) {
       event.preventDefault();
       thisBooking.sendReservation();
+      // thisBooking.getData();
     });
   }
 }

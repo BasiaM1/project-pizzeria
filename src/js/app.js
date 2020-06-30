@@ -61,7 +61,22 @@ const app = {
     thisApp.bookingTable = document.querySelector(select.containerOf.booking);
     thisApp.booking = new Booking(thisApp.bookingTable);
   },
+  initCarousel: function () {
+    // eslint-disable-next-line no-undef
+    $(document).ready(function () {
+      // eslint-disable-next-line no-undef
+      $('.carousel-quotes').slick({
+        infinite: true,
+        dots: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        fade: true,
+        fadeSpeed: 1000
+      });
+    });
 
+  },
   initMenu: function () {
     const thisApp = this;
     // console.log('thisApp.data', thisApp.data);
@@ -104,6 +119,7 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
+    thisApp.initCarousel();
   },
   initCart: function () {
     const thisApp = this;

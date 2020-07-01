@@ -14,6 +14,10 @@ const app = {
     /*wszystkie kontenery podstron (section.id=booking i order) ktore wyszukiwane sa w drzewie DOM*/
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
+    thisApp.orderLink = document.querySelector(select.homeLinks.order);
+    console.log('order', thisApp.orderLink);
+
+    thisApp.bookingLink = document.querySelector(select.homeLinks.booking);
 
     const idFromHash = window.location.hash.replace('#/', '');
 
@@ -40,8 +44,26 @@ const app = {
         window.location.hash = '#/' + id;
       });
     }
+    /* Order */
+    thisApp.orderLink.addEventListener('click', function (event) {
+      const orderId = 'order';
+      event.preventDefault();
+
+      thisApp.activatePage(orderId);
+      window.location.hash = '/' + orderId;
+    });
+    /* Booking */
+    thisApp.bookingLink.addEventListener('click', function (event) {
+      const bookingId = 'booking';
+      event.preventDefault();
+
+      thisApp.activatePage(bookingId);
+      window.location.hash = '/' + bookingId;
+    });
+
 
   },
+
   activatePage: function (pageId) {
     const thisApp = this;
     /* add class "active" to matching pages, remove from non-matching */
@@ -61,22 +83,7 @@ const app = {
     thisApp.bookingTable = document.querySelector(select.containerOf.booking);
     thisApp.booking = new Booking(thisApp.bookingTable);
   },
-  initCarousel: function () {
-    // eslint-disable-next-line no-undef
-    $(document).ready(function () {
-      // eslint-disable-next-line no-undef
-      $('.carousel-quotes').slick({
-        infinite: true,
-        dots: true,
-        arrows: false,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        fade: true,
-        fadeSpeed: 1000
-      });
-    });
 
-  },
   initMenu: function () {
     const thisApp = this;
     // console.log('thisApp.data', thisApp.data);
@@ -119,7 +126,6 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
-    thisApp.initCarousel();
   },
   initCart: function () {
     const thisApp = this;

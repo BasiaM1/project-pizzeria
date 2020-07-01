@@ -1,5 +1,13 @@
 /* Global */
 
+.main-nav {
+
+  .order,
+  .booking {
+    display: none;
+  }
+}
+
 .home-wrapper {
   margin: 42px auto;
   padding: 72px 48px;
@@ -18,8 +26,8 @@ h4 {
 .home-order-booking {
   display: flex;
   justify-content: center;
-  color: $color-light;
   overflow: hidden;
+  color: $color-light;
 
   .home-order {
     background-image: url('../../images/pizza-1.jpg');
@@ -29,6 +37,7 @@ h4 {
   .home-booking {
     background-image: url('../../images/pizza-2.jpg');
   }
+
 
   .box {
     position: relative;
@@ -69,7 +78,7 @@ h4 {
   border-radius: $radius;
   background-color: #fe6b6b;
   color: $color-light;
-  margin: 10px 0;
+  margin: 10px 0 60px;
 
   h4 {
     margin: 0;
@@ -82,28 +91,76 @@ h4 {
   }
 }
 
-/*Carousel */
-.carousel-wrapper {
-  margin: 100px auto;
-  height: 400px;
+/*Quotes */
+.quote-all {
   display: flex;
-  // align-items: center;
-  // justify-content: space-between;
+  margin: 30px 0 10px;
 
+  .quote-img {
+    flex: 1;
+    width: 190px;
+    height: 190px;
+    margin-right: 4px;
+    border-radius: $radius;
+    background-image: url('../../images/pizza-3.jpg');
+    background-size: cover;
+    background-position: center;
+  }
 
-  .carousel-img {
-    img {
-      width: 190px;
-      height: 190px;
-      border-radius: $radius;
+  .quote-text {
+    flex: 2;
+    font-family: $font-text;
 
+    p:nth-child(1) {
+      text-transform: uppercase;
+      font-weight: $font-bold;
+    }
+
+    p:nth-child(3) {
+      font-style: italic;
     }
   }
+}
+
+/* slick dots */
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+
+  margin: 0;
+  padding: 20px 0;
+
+  list-style: none;
+
+  li {
+    margin: 0 5px;
+  }
+
+  button {
+    display: block;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+
+    border: none;
+    border-radius: 100%;
+    border: black;
+    background-color: grey;
+
+    text-indent: -9999px;
+  }
+
+  li.slick-active button {
+    background-color: black;
+  }
+
 }
 
 /* Gallery */
 
 .home-gallery {
+  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

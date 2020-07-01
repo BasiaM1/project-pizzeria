@@ -92,32 +92,34 @@ h4 {
 }
 
 /*Quotes */
-.quote-all {
-  display: flex;
-  margin: 30px 0 10px;
+.quote-wrapper {
+  .quote-all {
+    display: flex;
+    margin: 30px 0 10px;
 
-  .quote-img {
-    flex: 1;
-    width: 190px;
-    height: 190px;
-    margin-right: 4px;
-    border-radius: $radius;
-    background-image: url('../../images/pizza-3.jpg');
-    background-size: cover;
-    background-position: center;
-  }
-
-  .quote-text {
-    flex: 2;
-    font-family: $font-text;
-
-    p:nth-child(1) {
-      text-transform: uppercase;
-      font-weight: $font-bold;
+    .quote-img {
+      flex: 1;
+      width: 190px;
+      height: 190px;
+      margin-right: 40px;
+      border-radius: $radius;
+      background-image: url('../../images/pizza-3.jpg');
+      background-size: cover;
+      background-position: center;
     }
 
-    p:nth-child(3) {
-      font-style: italic;
+    .quote-text {
+      flex: 2;
+      font-family: $font-text;
+
+      p:nth-child(1) {
+        text-transform: uppercase;
+        font-weight: $font-bold;
+      }
+
+      p:nth-child(3) {
+        font-style: italic;
+      }
     }
   }
 }

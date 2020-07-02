@@ -231,6 +231,19 @@ class Booking {
     thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.bookingForm);
 
   }
+  // rangeSliderColor(){
+  //   const thisBooking=this;
+  //   const rangeSlider=document.querySelector('.rangeSlider');
+  //   for(let i=12; i<24; i+=0.5){
+  //   if (thisBooking.datePicker.value[i].length<=1){ //liczba zajętych stolikow
+  //     // green
+  //   }else if((thisBooking.datePicker.value[i].length>=2) &&(thisBooking.datePicker.value[i].length<3)){
+  //     //orange
+  //   }else{
+  //     //red
+  //   }
+  //   }
+  // }
 
   initWidgets() {
     const thisBooking = this;

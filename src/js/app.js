@@ -84,6 +84,18 @@ const app = {
     thisApp.booking = new Booking(thisApp.bookingTable);
   },
 
+  initCarousel: function () {
+    // eslint-disable-next-line no-undef
+    $('.quote-wrapper').slick({
+
+      dots: true,
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 3000,
+
+
+    });
+  },
   initMenu: function () {
     const thisApp = this;
     // console.log('thisApp.data', thisApp.data);
@@ -126,6 +138,7 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
+    thisApp.initCarousel();
   },
   initCart: function () {
     const thisApp = this;

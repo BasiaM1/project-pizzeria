@@ -243,7 +243,6 @@ class Booking {
         let color = `green ${percentage}%`;
         colorGrad.push(color);
         console.log('thisBooking.booked[thisBooking.datePicker.value][i]', thisBooking.booked[thisBooking.datePicker.value][i]);
-
       } else if (thisBooking.booked[thisBooking.datePicker.value][i].length == 2) {
         let color = `orange ${percentage}%`;
         colorGrad.push(color);
@@ -257,7 +256,6 @@ class Booking {
     const linearGrad = colorGrad.join();
     const gradient = `linear-gradient(to right, ${linearGrad})`;
     rangeSlider.style.backgroundImage = gradient;
-
   }
 
   initWidgets() {

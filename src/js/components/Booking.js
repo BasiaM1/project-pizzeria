@@ -57,10 +57,10 @@ class Booking {
     console.log('getData urls', urls);
     // laczenie z API - pobranie rezerwacji
     Promise.all([
-        fetch(urls.booking),
-        fetch(urls.eventsCurrent),
-        fetch(urls.eventsRepeat),
-      ])
+      fetch(urls.booking),
+      fetch(urls.eventsCurrent),
+      fetch(urls.eventsRepeat),
+    ])
       .then(function (allResponses) {
         const bookingsResponse = allResponses[0];
         const eventsCurrentResponse = allResponses[1];

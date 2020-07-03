@@ -212,10 +212,31 @@
       "ppl": 3,
       "starters": []
     },
+
+    {
+      "id": 6,
+      "date": "2020-07-10",
+      "hour": "17:00",
+      "table": 3,
+      "repeat": false,
+      "duration": 3,
+      "ppl": 3,
+      "starters": []
+    },
+    {
+      "id": 7,
+      "date": "2020-07-10",
+      "hour": "17:00",
+      "table": 2,
+      "repeat": false,
+      "duration": 3,
+      "ppl": 3,
+      "starters": []
+    },
     {
       "id": 2,
       "date": "2020-07-01",
-      "hour": "16:00",
+      "hour": "12:00",
       "table": 3,
       "repeat": "daily",
       "duration": 2,
@@ -226,17 +247,17 @@
       "id": 3,
       "date": "2020-08-01",
       "hour": "12:00",
-      "table": 3,
+      "table": 1,
       "repeat": "daily",
-      "duration": 1,
+      "duration": 2,
       "ppl": 3,
       "starters": ["bread", "lemonWater"]
     },
     {
       "id": 4,
       "date": "2020-07-01",
-      "hour": "13:00",
-      "table": 2,
+      "hour": "15:00",
+      "table": 1,
       "repeat": "daily",
       "duration": 3,
       "ppl": 3,
@@ -245,7 +266,7 @@
     {
       "id": 5,
       "date": "2020-07-01",
-      "hour": "18:00",
+      "hour": "15:00",
       "table": 2,
       "repeat": "daily",
       "duration": 2,
